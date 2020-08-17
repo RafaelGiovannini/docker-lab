@@ -1,0 +1,38 @@
+<div fxFill fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="1.5rem" class="mat-typography">
+    <div>
+        <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="2rem">
+        </div>
+    </div>
+    <div class="login-container" fxLayout="row" fxLayoutAlign="center">
+        <mat-card fxLayout="column " fxLayoutAlign="center" class="login-box">
+            <form (ngSubmit)="cadastrar()" [formGroup]="cadastroForm" novalidate>
+                <div class="login-fields" fxLayout="column" fxLayoutAlign="space-evenly">
+                    <h1 class="mb30 mt30" style="text-align: center">Cadastro</h1>
+                    <mat-form-field [hideRequiredMarker]="true" appearance="fill">
+                        <mat-label>Usuario</mat-label>
+                        <input type="text" matInput formControlName="usuario" autocomplete="usuario" required />
+                    </mat-form-field>
+                    <mat-form-field [hideRequiredMarker]="true" appearance="fill">
+                        <mat-label>Senha</mat-label>
+                        <input type="text" matInput formControlName="senha" autocomplete="senha" required />
+                    </mat-form-field>
+                    <mat-form-field [hideRequiredMarker]="true" appearance="fill">
+                        <mat-label>Idade</mat-label>
+                        <input type="number" matInput formControlName="idade" autocomplete="username" required />
+                    </mat-form-field>
+                    <!-- <mat-form-field [hideRequiredMarker]="true" appearance="fill">
+                        <mat-label>email</mat-label>
+                        <input type="text" matInput formControlName="idade" autocomplete="username" required />
+                    </mat-form-field> -->
+                    <button class="mt30" mat-raised-button color="accent" type="submit">
+                        <span>Cadastrar</span>
+                    </button>
+                </div>
+            </form>
+            <div style="text-align: center"  class="mt20">
+                <mat-divider style="margin-bottom: 10px"></mat-divider>
+                <span (click)="IrParaLogin()"  class="mt20 linkcadastro">voltar para tela de login</span>
+            </div>
+        </mat-card>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+:host {
+    display: flex;
+    flex: 1;
+    background-color: #f5f5f5;
+  }
+  
+  .inline-loader {
+    display: inline-block;
+  }
+  
+  .login-container,
+  .mat-form-field {
+    width: 100%;
+  }
+  
+  .login-fields > :not(:last-child) {
+    margin-bottom: 8px;
+  }
+  
+  .login-fields{
+    
+      padding: 0px 40px 40px 40px;
+  }
+  
+  .login-container{
+    width: 100%;
+    min-height: 450px;
+  }
+  
+  .login-box{
+    width: 450px;
+  }
+  
+  mat-icon{
+    color: gray;
+  }
+
+  .mat-card .mat-divider-horizontal{
+    position: unset;
+}
+  
+  .linkcadastro{
+    cursor: pointer;
+}
+
+  

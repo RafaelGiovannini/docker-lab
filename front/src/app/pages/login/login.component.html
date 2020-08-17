@@ -1,0 +1,44 @@
+<div fxFill fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="1.5rem" class="mat-typography">
+    <div>
+        <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="2rem">
+        </div>
+    </div>
+    <div class="login-container" fxLayout="row" fxLayoutAlign="center">
+        <mat-card fxLayout="column " fxLayoutAlign="center" class="login-box">
+            <form (ngSubmit)="login()" [formGroup]="loginForm" novalidate>
+                <div class="login-fields" fxLayout="column" fxLayoutAlign="space-evenly">
+                    <img style="margin: auto;" width="150px"
+                        src="https://www.docker.com/sites/default/files/d8/2019-07/horizontal-logo-monochromatic-white.png">
+                        
+                    <mat-form-field [hideRequiredMarker]="true" appearance="fill">
+                        <mat-label>Usuário</mat-label>
+                        <input  type="text" matInput formControlName="usuario"
+                            autocomplete="username" required />
+                        <mat-error *ngIf="loginForm.controls.usuario.invalid && loginForm.controls.usuario.touched">
+                            <span>É necessário informar um usuário</span>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field [hideRequiredMarker]="true" appearance="fill">
+                        <mat-label>Senha</mat-label>
+                        <input type="password" matInput formControlName="senha" [type]="hide ? 'password' : 'text'"
+                            required />
+                        <button type="button" mat-icon-button matSuffix (click)="hide = !hide"
+                            [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                        <mat-error *ngIf="loginForm.controls.senha.invalid && loginForm.controls.senha.touched">
+                            <span>É necessário informar uma senha</span>
+                        </mat-error>
+                    </mat-form-field>
+                    <button class="mt30" mat-raised-button color="accent" type="submit">
+                        <span>Entrar</span>
+                    </button>
+                </div>
+            </form>
+            <div style="text-align: center"  class="mt20">
+                <mat-divider style="margin-bottom: 10px"></mat-divider>
+                <span (click)="IrParaCadastro()"  class="mt20 linkcadastro">Não possui uma conta ? Cadastre-se agora</span>
+            </div>
+        </mat-card>
+    </div>
+</div>

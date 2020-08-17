@@ -1,0 +1,17 @@
+ <mat-toolbar fxLayout="row" fxLayoutAlign="space-between center" color="primary" style="position: absolute">
+
+    <span>Docker Lab</span>
+    <span style="cursor: pointer" (click)="sair()" >Logout</span>
+
+</mat-toolbar>
+
+<div fxFill fxLayout="row" fxLayoutAlign="center center">
+    <div fxFill fxLayout="column" fxLayoutAlign="center center">
+        <span class="mb40 titulo-home">Bem-vindo Rafael, clique no botao para gerar uma imagem!</span>
+        <img width="500px" src="https://www.petz.com.br/blog/wp-content/uploads/2019/07/vida-de-gato.jpg" alt="">
+        <button (click)="gerarImagem()" class="mt20" mat-raised-button color="accent">
+            Gerar Imagem
+        </button>
+    </div>
+</div> 
+
