@@ -25,7 +25,7 @@ export class LoginService {
     this.userDataSubject = new BehaviorSubject<any>(JSON.parse(sessionStorage.getItem("user")));
     this.userData = this.userDataSubject.asObservable();
 
-
+    
   }
 
 
@@ -37,7 +37,7 @@ export class LoginService {
     return this.http.post<any>(this.url + '/login', user)
       .pipe(map(user => {
         sessionStorage.setItem("user", JSON.stringify(user.user));
-        this.userDataSubject.next(user);
+        this.userDataSubject.next(user.user);
       }))
   }
 

@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../login/login.service';
+import { HomeService } from './home.service';
+import { DomSanitizer } from '@angular/platform-browser';
+import { saveAs } from 'file-saver'
+
 
 @Component({
   selector: 'app-home',
@@ -9,13 +13,29 @@ import { LoginService } from '../login/login.service';
 
 export class HomeComponent implements OnInit {
 
-  constructor(private loginService:LoginService) { }
+  imagem
+  user
 
+  constructor(
+    private loginService:LoginService,
+    private homeService:HomeService,
+    private sanitizer: DomSanitizer
+    ) { }
+
+  
   ngOnInit(): void {
+
+    this.user = this.loginService.userDataValue
+
   }
 
   gerarImagem(){
-
+    this.homeService.gerarImagem()
+    .subscribe(res=>{
+     const url = window.URL.createObjectURL(res);
+     this.imagem = this.sanitizer.bypassSecurityTrustUrl(url);
+    
+    })
   }
 
   sair(){

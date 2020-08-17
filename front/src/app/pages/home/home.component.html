@@ -7,8 +7,8 @@
 
 <div fxFill fxLayout="row" fxLayoutAlign="center center">
     <div fxFill fxLayout="column" fxLayoutAlign="center center">
-        <span class="mb40 titulo-home">Bem-vindo Rafael, clique no botao para gerar uma imagem!</span>
-        <img width="500px" src="https://www.petz.com.br/blog/wp-content/uploads/2019/07/vida-de-gato.jpg" alt="">
+        <span class="mb40 titulo-home">Bem-vindo <span class="nome">{{user.usuario}} !</span>, clique no botao para gerar uma imagem!</span>
+        <img width="500px" [src]="imagem" alt="">
         <button (click)="gerarImagem()" class="mt20" mat-raised-button color="accent">
             Gerar Imagem
         </button>

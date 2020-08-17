@@ -1,35 +1,19 @@
-// app.get('/gato/', (req, res) => {
-//     res.send({ gato: `Miauuuuu` })
-// });
-
-// app.get('/gato/:id', (req, res) => {
-//     res.sendFile(__dirname + '/src/img/100.jpeg')
-// });
-
 const express = require('express');
-const User = require('../models/user');
 const router = express.Router();
+const path = require('path'); 
 
 
-router.get('/gato/', async (req, res) => {
-    try {
-        const user = await User.create(req.body);
+function randomIntFromInterval(min, max) { // min and max included 
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  }
 
-        return res.send({ user })
-    } catch (err) {
-        return res.status(400).send({ error: 'error' })
-    }
-});
+router.get('/gato/', (req, res) => {
+    const randomid = randomIntFromInterval(1, 15)
 
-router.get('/gato/:id', async (req, res) => {
-    try {
-        const user = await User.create(req.body);
+    filepath = path.join(__dirname, '../../src/img/'+randomid+'.jpg');
 
-        return res.send({ user })
-    } catch (err) {
-        return res.status(400).send({ error: 'error' })
-    }
-});
+    res.sendFile(filepath);
+  });
 
 
 module.exports = app => app.use('/home', router)
