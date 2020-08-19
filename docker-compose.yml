@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+
+  nginx:
+    container_name: front_dockerlab
+    image: front_image
+    build: './front'
+    ports:
+      - 8080:80
+    networks:
+      - lab-network
+
+  api_name:
+    container_name: api_dockerlab
+    image: api_image
+    build: './api'
+    environment:
+      MONGO_HOSTNAME: mongodb
+      MONGO_PORT: 27017
+      MONGO_DB: dockercat
+    ports:
+      - '8081:8081'
+    networks:
+      - lab-network
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: 'mongo'
+    container_name: mongodb
+    ports:
+      - '27017:27017'
+    networks:
+      - lab-network
+networks:
+  lab-network:
+    driver: bridge
