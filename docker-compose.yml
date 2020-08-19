@@ -2,7 +2,7 @@ version: '3'
 
 services:
 
-  nginx_angular:
+  front_dockerlab:
     container_name: front_dockerlab
     image: front_image
     ports:
@@ -10,9 +10,9 @@ services:
     networks:
       - lab-network
     depends_on:
-      - api_node
+      - api_dockerlab
 
-  api_node:
+  api_dockerlab:
     container_name: api_dockerlab
     image: api_image
     environment:
