@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "docker-lab"
+  "defaultProject": "docker-lab",
+  "cli": {
+    "analytics": false
+  }
 }

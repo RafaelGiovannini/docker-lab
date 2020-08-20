@@ -16,7 +16,7 @@ export class HomeService {
 
 
   gerarImagem():Observable<any>{
-    return this.http.get(this.urlbase+'/gato',{ responseType: 'blob' })
+    return this.http.get(this.urlbase+'/gato',{ observe: 'response', responseType: 'blob' });
   }
 
   gerarImagemId():Observable<any>{

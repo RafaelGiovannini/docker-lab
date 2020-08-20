@@ -5,6 +5,7 @@
 export const environment = {
   urlbase:"",
   // urlbase:"http://localhost:8081",
+  host:"changeit",
   production: false
 };
 

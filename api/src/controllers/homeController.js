@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const path = require('path'); 
+const os = require("os");
 
 
 function randomIntFromInterval(min, max) { // min and max included 
@@ -12,6 +13,8 @@ router.get('/gato/', (req, res) => {
 
     filepath = path.join(__dirname, '../../src/img/'+randomid+'.jpg');
 
+    res.setHeader('source-server', os.hostname());
+    res.setHeader('access-control-expose-headers', 'source-server');
     res.sendFile(filepath);
   });
 
