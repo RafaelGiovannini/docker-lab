@@ -10,14 +10,9 @@ export class CadastroService {
 
   constructor(private http:HttpClient) { }
 
-  urlBase = environment.urlbase+'/auth'
+  private urlBase = `${environment.urlbase}${environment.basepath}/auth`
 
   cadastar(user):Observable<any>{
-    console.log(user)
     return this.http.post<any>(this.urlBase +'/register', user)
   }
-  buscarUsuario():Observable<any>{
-    return this.http.get<any>('http://localhost:8080/cadastro/id')
-  }
-
 }

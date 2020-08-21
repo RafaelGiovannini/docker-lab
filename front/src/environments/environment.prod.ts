@@ -1,4 +1,6 @@
 export const environment = {
   urlbase:"",
-  production: true
+  basepath: "/api/v1",
+  host:"changeit",
+  production: false
 };

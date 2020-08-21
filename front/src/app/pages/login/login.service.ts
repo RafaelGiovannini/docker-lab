@@ -14,36 +14,30 @@ export class LoginService {
 
   public userDataSubject: BehaviorSubject<any>;
   public userData: Observable<any>
-  
-  url = environment.urlbase + '/auth'
+
+  private urlBase = `${environment.urlbase}${environment.basepath}/auth`
 
   constructor(
     private http: HttpClient,
-    private router:Router
+    private router: Router
   ) {
-
     this.userDataSubject = new BehaviorSubject<any>(JSON.parse(sessionStorage.getItem("user")));
     this.userData = this.userDataSubject.asObservable();
-
-    
   }
-
 
   public get userDataValue() {
     return this.userDataSubject.value;
   }
 
   login(user): Observable<any> {
-    return this.http.post<any>(this.url + '/login', user)
+    return this.http.post<any>(this.urlBase + '/login', user)
       .pipe(map(user => {
         sessionStorage.setItem("user", JSON.stringify(user.user));
         this.userDataSubject.next(user.user);
       }))
   }
 
-
-  
-  logout(){
+  logout() {
     sessionStorage.removeItem('user');
     this.userDataSubject.next(null);
     this.router.navigate(['/login']);;

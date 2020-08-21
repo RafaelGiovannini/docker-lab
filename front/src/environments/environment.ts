@@ -4,7 +4,7 @@
 
 export const environment = {
   urlbase:"",
-  // urlbase:"http://localhost:8081",
+  basepath: "/api/v1",
   host:"changeit",
   production: false
 };

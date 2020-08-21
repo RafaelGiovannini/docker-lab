@@ -8,18 +8,13 @@ import { environment } from 'src/environments/environment';
 })
 export class HomeService {
 
- urlbase= environment.urlbase+ '/home'
+ private urlbase = `${environment.urlbase}${environment.basepath}/cat`
 
   constructor(
     private http:HttpClient
   ) { }
 
-
   gerarImagem():Observable<any>{
-    return this.http.get(this.urlbase+'/gato',{ observe: 'response', responseType: 'blob' });
-  }
-
-  gerarImagemId():Observable<any>{
-    return this.http.get<any>('http://localhost:8080/gato/id')
+    return this.http.get(this.urlbase,{ observe: 'response', responseType: 'blob' });
   }
 }
