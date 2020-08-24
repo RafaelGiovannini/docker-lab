@@ -1,0 +1,49 @@
+version: '3'
+
+services:
+  mongosrv:
+    image: mongo:4.4-bionic
+    networks:
+      - catnet
+    deploy:
+      replicas: 1
+      placement:
+        preferences:
+          - spread: node.labels.bd
+  api:
+    image: guineves1998/catapi@sha256:e1273ccc7353202d42015e14ce7afa07b01b03042bd1d72dc187fcc38c51340f
+    networks:
+      - catnet
+    ports:
+      - "8081:3000"
+    deploy:
+      replicas: 4
+      placement:
+        constraints:
+          - "node.labels.type==back"
+    configs:
+      - source: apienv
+        target: /usr/src/app/.env
+  front:
+    image: guineves1998/frontcat@sha256:61e257258ada4237d992263df61b15ca31ab9a2e098df5428002f8fa142c1bc1
+    networks:
+      - catnet
+    ports:
+      - "8080:80"
+    deploy:
+      mode: global
+      placement:
+        constraints:
+          - "node.labels.type==front"
+    configs:
+      - source: frontconfig
+        target: /etc/nginx/conf.d/default.conf
+
+configs:
+  apienv:
+    file: ./api
+  frontconfig:
+    file: ./front
+networks:
+  catnet:
+    driver: overlay
